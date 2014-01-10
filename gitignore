@@ -1,0 +1,8 @@
+.*.swp
+.swp
+*.pyc
+.coverage
+*,cover
+.vim/doc/tags
+vim/.netrwhist
+.DS_Store
