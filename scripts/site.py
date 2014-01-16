@@ -88,6 +88,11 @@ try:
                 os.makedirs( document_root )
                 os.makedirs( document_base_root + '/logs/' )
                 os.makedirs( document_base_root + '/private/' )
+                try:
+                    os.system('./fixperms.py ' + document_base_root );
+                except:
+                    print 'fail'
+
             except IOError as e:
                 print "I/O error({0}): {1}".format(e.errno, e.strerror)
 
