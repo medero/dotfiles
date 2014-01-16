@@ -6,7 +6,7 @@ endif
 "set term=gnome-256color
 "colorscheme ir_black
 
-imap zx <esc>
+"imap zx <esc>
 
 map ,e :e <C-R>=expand("%:p:h")."\/"<CR>
 map ,ph :e C:\web\phpclasses\esite\classes."\\"<CR>
@@ -26,6 +26,7 @@ set backspace=indent,eol,start whichwrap+=<,>,[,]
 set autoindent
 set smarttab
 set smartindent
+set expandtab
 set encoding=utf-8
 set fileencoding=utf-8
 setglobal fileencoding=utf-8
