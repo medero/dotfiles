@@ -7,8 +7,8 @@
 		AllowOverride None
 	</Directory>
 
-	ErrorLog "/${DOC_BASE_ROOT}/logs/errors/%Y-%m-%d_errors.log 86400"
-	CustomLog "/${DOC_BASE_ROOT}/logs/%Y-%m-%d_access.log 86400" combined
+	ErrorLog "${DOC_BASE_ROOT}/logs/errors/%Y-%m-%d_errors.log 86400"
+	CustomLog "${DOC_BASE_ROOT}/logs/%Y-%m-%d_access.log 86400" combined
 
 	Options -Indexes
 </VirtualHost>

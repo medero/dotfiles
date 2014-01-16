@@ -6,6 +6,7 @@ import sys, re, os
 
 conf = '../misc/example.org'
 output_conf = 'x3-output.conf'
+apache_dir = '/etc/apache2/sites-available/'
 
 document_root = raw_input('DocumentRoot? (ex: sitename_com/trunk/): ')
 
@@ -17,11 +18,12 @@ if ( document_root.find('/') is not -1 ):
         document_root_temp = document_root.split('/')
         document_base_root = filter( None, document_root_temp )
         document_base_root = '/'.join( document_base_root[0:-1] )
+        document_base_root = '/' + document_base_root
 
 # vm = raw_input('Which VM? (default=1-2; ex: 1, 2, 1-2, 3-4, 11-12, 15-16 ): ')
 # if not vm: vm = '1-2'
 
-server_name = raw_input('ServerName? (ex: www.trumphotelcollection.com): ')
+server_name = raw_input('ServerName? (ex: www.google.com): ')
 
 if not server_name: server_name = 'www.sitename.com'
 
@@ -74,9 +76,20 @@ for x in dict:
         text = text.replace( '${' + x + '}', dict[x] )
 
 try:
-    confFile = os.open('/etc/apache2/sites-available/' + filename, os.O_WRONLY | os.O_CREAT | os.O_EXCL )
+    confFile = os.open( apache_dir + filename, os.O_WRONLY | os.O_CREAT | os.O_EXCL )
     os.write( confFile, text )
     os.close ( confFile )
-    print 'File has been created. Please make sure you verify the VirtualHost IPs before gracefuling'
+    print 'Virtualhost created at ' + apache_dir + filename
+
+    create = raw_input('Directory to create correct? ' + document_base_root + ' '  )
+    if create in yes:
+        if not os.path.exists( document_base_root ):
+            try:
+                os.makedirs( document_root )
+                os.makedirs( document_base_root + '/logs/' )
+                os.makedirs( document_base_root + '/private/' )
+            except IOError as e:
+                print "I/O error({0}): {1}".format(e.errno, e.strerror)
+
 except IOError as e:
     print "I/O error({0}): {1}".format(e.errno, e.strerror)
