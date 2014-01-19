@@ -4,7 +4,7 @@
 
 import sys, re, os
 
-conf = '../misc/example.org'
+conf = '../misc/example.org.txt'
 output_conf = 'x3-output.conf'
 apache_dir = '/etc/apache2/sites-available/'
 
@@ -32,7 +32,7 @@ if not server_name: server_name = 'www.sitename.com'
 
 redirect_www = False
 
-filename = raw_input('Conf file name? (ex: trumphotel.conf): ')
+filename = raw_input('Conf file name? (ex: sitename.conf): ')
 
 if not filename: filename=server_name
 

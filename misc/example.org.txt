@@ -1,0 +1,14 @@
+<VirtualHost *:80>
+	ServerName ${SERVER_NAME}
+	DocumentRoot ${DOC_ROOT}
+
+	<Directory />
+		Options FollowSymLinks
+		AllowOverride None
+	</Directory>
+
+        ErrorLog "${DOC_BASE_ROOT}/logs/error.log"
+        CustomLog "${DOC_BASE_ROOT}/logs/access.log 86400" combined
+
+	Options -Indexes
+</VirtualHost>
