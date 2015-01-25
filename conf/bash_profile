@@ -1,3 +1,11 @@
+# bashrc is not sourced when you login with ssh
+# so source it
+# http://stackoverflow.com/questions/820517/bashrc-at-ssh-login
+
+if [ -f ~/.bashrc ]; then
+    . ~/.bashrc
+fi
+
 # make the default editor vim
 export EDITOR='vim'
 
@@ -21,3 +29,6 @@ alias ls='ls --color'
 
 # cant remember the args to tarball
 alias tarball='tar -zcvf'
+
+# this one is custom
+export NODE_PATH=/home/meder/fedor/node_modules:$NODE_PATH
